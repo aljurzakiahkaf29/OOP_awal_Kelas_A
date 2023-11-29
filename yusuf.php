@@ -1,48 +1,60 @@
+<!DOCTYPE html>
+<html>
+<body>
 <?php
-class mahasiswa
-{
-    // Properties
-    private $name;
-    private $nim;
-    private $mat_kul;
-    private $cita_cita;
+class mahasiswa {
+  // Properties
+  private $name;
+  private $nim;
+  private $matkul;
+  private $cita_cita;
+  
+  // Methods
+  function __construct($name, $nim, $matkul, $cita_cita) {
+    $this->name = $name;
+    $this->nim = $nim;
+    $this->matkul = $matkul;
+    $this->cita_cita = $cita_cita;
+  }
+  
+  function get_name() {
+    return $this->name;
+  }
+  function get_nim() {
+    return $this->nim;
+  }
+  
+  protected function get_matkul() {
+    return $this->matkul;
+  }
 
+  protected function get_cita_cita() {
+    return $this->cita_cita;
+  }
 
-    // Methods
-    function __construct($name, $nim, $mat_kul, $cita_cita)
-    {
-        $this->name = $name;
-        $this->nim = $nim;
-        $this->mat_kul = $mat_kul;
-        $this->cita_cita = $cita_cita;
-    }
-
-    function get_name()
-    {
-        return $this->name;
-    }
-
-    function get_nim()
-    {
-        return $this->nim;
-    }
-
-    function get_mat_kul()
-    {
-        return $this->mat_kul;
-    }
-
-    function get_cita_cita()
-    {
-        return $this->cita_cita;
-    }
+  function __destruct() {
+    echo "<br>ini akhir dari class mahasiswa {$this->name}";
+  }
 }
 
-$yusuf = new mahasiswa('Yusuf', '2255201040', 'PBO', 'Pengusaha');
-echo "Name: " . $yusuf->get_name();
-echo "\n";
-echo "nim: " . $yusuf->get_nim();
-echo "\n";
-echo "mat_kul: " . $yusuf->get_mat_kul();
-echo "\n";
-echo "cita cita: " . $yusuf->get_cita_cita();
+class Organisasi extends Mahasiswa {
+  public function name_organisasi() {
+    echo $this->get_name();
+    echo "<br>";
+    echo $this->get_nim();
+    echo "<br>";
+    echo $this->get_matkul();
+    echo "<br>";
+    echo $this->get_cita_cita();
+    echo "<br>";
+    echo "Gardu";
+    
+  }
+}
+
+$organisasi = new Organisasi('yusuf', '2255201040', 'PBO', 'Pengusaha');
+$organisasi->name_organisasi();
+?>
+
+</body>
+</html>
